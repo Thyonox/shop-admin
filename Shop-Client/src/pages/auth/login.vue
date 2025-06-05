@@ -67,7 +67,7 @@ const router = useRouter();
 const isShow = ref(false);
 
 // 按钮是否可点击
-const isDisabled = ref(true);
+const isDisabled = ref(false);
 
 // 表单数据
 const formData = reactive({
@@ -79,7 +79,7 @@ const submit = () => {
   //数据校验
 
   // 锁定登录按钮
-  isDisabled.value = false;
+  isDisabled.value = true;
   // 提交登录
   login(formData.username, formData.password)
       .then(res => {
@@ -91,7 +91,7 @@ const submit = () => {
         router.push('/');
       })
       .finally(() => {
-        isDisabled.value = true;
+        isDisabled.value = false;
       })
 }
 

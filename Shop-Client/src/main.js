@@ -10,6 +10,7 @@ import 'remixicon/fonts/remixicon.css'
 import router from './router'
 // Import Pinia
 import store from "@/store/index.js";
+import './permission.js';
 import App from './App.vue'
 
 const app = createApp(App);

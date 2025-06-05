@@ -3,3 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+#nprogress .bar {
+  background-color: #330867 !important;
+  height: 3px !important;
+}
