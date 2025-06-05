@@ -3,13 +3,28 @@ import { createWebHistory, createRouter } from 'vue-router'
 import NotFount from '@/pages/error/404.vue'
 import Login from '@/pages/auth/login.vue'
 import Home from '@/pages/index.vue'
-// import Layout from '../Layout/index.vue'
+import Layout from "@/layout/layout.vue";
 // import GoodsList from '../views/goods/list.vue'
 // import CategoryList from '../views/category/list.vue'
 // import ImageList from '../views/image/list.vue'
 
 // 公共路由
 const routes = [
+  {
+    path: '/',
+    name: 'Layout',
+    component: Layout,
+    children: [
+      {
+        path: '/',
+        name: 'Home',
+        component: Home,
+        meta: {
+          title: '后台首页'
+        }
+      },
+    ]
+  },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFount',
@@ -26,19 +41,6 @@ const routes = [
       title: '登录页'
     }
   },
-  {
-    path: '/',
-    name: '/',
-    component: Home,
-    meta: {
-      title: '后台首页'
-    }
-  }
-//   {
-//     path: '/',
-//     name: 'Layout',
-//     component: Layout,
-//   }
 ]
 
 // 动态路由
