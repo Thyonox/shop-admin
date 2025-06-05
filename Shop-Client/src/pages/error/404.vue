@@ -22,7 +22,7 @@ const reHome = () => {
 }
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 .page-404 {
     height: 100vh;
@@ -67,7 +67,8 @@ const reHome = () => {
     font-size: 16px;
 }
 
-.el-button {
+/*Vue3 推荐的深度穿透方式*/
+::v-deep(.el-button) {
     width: 100%;
     margin: 20px 0;
     border-radius: 15px;
