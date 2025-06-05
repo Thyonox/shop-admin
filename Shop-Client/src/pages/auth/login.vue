@@ -11,10 +11,10 @@
                         <a href="#"><i class="ri-linkedin-box-fill"></i></a>
                     </div>
                     <span>或者使用邮箱密码登录</span>
-                    <input type="email" placeholder="邮箱账号">
-                    <input type="password" placeholder="邮箱密码">
+                    <input type="email" placeholder="邮箱账号" v-model="formData.username">
+                    <input type="password" placeholder="邮箱密码" v-model="formData.password">
                     <a href="#">忘记密码?</a>
-                    <button>登录</button>
+                    <button @click="submit">登录</button>
                 </div>
             </div>
 
@@ -55,11 +55,20 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import {reactive, ref} from "vue";
 
 // 登录注册状态切换
 const isShow = ref(false);
 
+// 表单数据
+const formData = reactive({
+  username: '',
+  password: '',
+})
+
+const submit = () => {
+  console.log(formData)
+}
 
 </script>
 
