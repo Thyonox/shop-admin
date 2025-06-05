@@ -14,15 +14,25 @@ const routes = [
     path: '/:pathMatch(.*)*',
     name: 'NotFount',
     component: NotFount,
+    meta: {
+      title: '404页面'
+    }
   },
   {
     path: '/login',
     name: 'Login',
     component: Login,
+    meta: {
+      title: '登录页'
+    }
   },
   {
     path: '/',
+    name: '/',
     component: Home,
+    meta: {
+      title: '后台首页'
+    }
   }
 //   {
 //     path: '/',
