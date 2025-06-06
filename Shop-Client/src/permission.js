@@ -3,13 +3,13 @@ import {getToken} from "@/utils/auth.js";
 import {getInfo} from "@/api/manager.js";
 import {notify} from "@/utils/message.js";
 import useUserStore from "@/store/modules/user.js";
-import {hideFullLoading, showFullLoading} from "@/utils/loading.js";
+import {toggleFullLoading} from "@/utils/loading.js";
 
 
 // 路由前置守卫
 router.beforeEach((to, from, next) => {
-
-    showFullLoading();
+    // 开启全局 Loading 条
+    toggleFullLoading();
 
     // 获取 Token
     const token = getToken();
@@ -43,5 +43,6 @@ router.beforeEach((to, from, next) => {
 
 // 路由后置守卫
 router.afterEach((to, from, next) => {
-    hideFullLoading();
+    // 关闭全局 Loading 条
+    toggleFullLoading();
 })
