@@ -31,9 +31,6 @@ export function useRePassword(){
     const router = useRouter();
     const userStore = useUserStore();
 
-    // 是否展示修改密码对话框
-    const isShowDialog = ref(false);
-
     // 表单数据
     const form = reactive({
         oldpassword: '',
@@ -69,10 +66,17 @@ export function useRePassword(){
     //表单引用
     const formRef = ref(null);
 
+    // 对话框组件引用
+    const formDialogRef = ref(null);
+
+    // 打开抽屉方法（是从 dialog 对话框组件中暴露出来的方法）
+    const openDialog = () => formDialogRef.value.open();
+
     const onSubmit = () => {
-        console.log(form)
         formRef.value.validate((valid) => {
             if (!valid) return;
+            // 按钮展示 loding 动画
+            formDialogRef.value.showLoading();
             // 数据校验通过，执行修改密码方法
             changePassword(form).then(res => {
                 // 移除 Token
@@ -83,9 +87,12 @@ export function useRePassword(){
                 router.push("/login");
                 // 提示
                 notify('密码修改成功，请重新登录');
+            }).finally(() => {
+                // 关闭按钮 loading 动画
+                formDialogRef.value.hideLoading();
             })
         })
     }
 
-    return {isShowDialog, form,rules,formRef,onSubmit};
+    return {form,rules,formRef,formDialogRef,openDialog, onSubmit};
 }
