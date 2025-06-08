@@ -1,4 +1,5 @@
 import NProgress from "nprogress";
+// import 'nprogress/nprogress.css';
 // 使用自定义的 NProgress 的 CSS 文件
 import '@/assets/style/nprogress.css';
 import {useNProgress} from "@vueuse/integrations/useNProgress";

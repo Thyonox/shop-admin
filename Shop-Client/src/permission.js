@@ -5,9 +5,11 @@ import {notify} from "@/utils/message.js";
 import useUserStore from "@/store/modules/user.js";
 import {toggleFullLoading} from "@/utils/loading.js";
 
+// 防止重复发起请求
+let hasGetInfo = false;
 
 // 路由前置守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach( async (to, from, next) => {
     // 开启全局 Loading 条
     toggleFullLoading();
 
@@ -27,10 +29,12 @@ router.beforeEach((to, from, next) => {
     }
 
     // 获取用户信息
-    if (token){
-        getInfo().then(res => {
+    if (token && !hasGetInfo){
+        // 使用 await 使请求通过再放行，产生一个空白时间
+        await getInfo().then(res => {
             useUserStore().user = res;
         })
+        hasGetInfo = true;
     }
 
     // 设置页面标题

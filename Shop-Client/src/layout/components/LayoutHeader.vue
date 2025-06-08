@@ -5,8 +5,9 @@
     </div>
     <div class="left">
       <el-tooltip content="折叠" placement="bottom" effect="light">
-        <el-icon class="icon-btn">
-          <Fold/>
+        <el-icon class="icon-btn" @click="collapse">
+          <Fold v-if="appStore.asideWidth === '250px'"/>
+          <Expand v-else/>
         </el-icon>
       </el-tooltip>
       <el-tooltip content="刷新" placement="bottom" effect="light">
@@ -73,6 +74,9 @@
 import {useFullscreen} from "@vueuse/core";
 import {useLogout,useRePassword} from "@/services/userService.js";
 import FormDialog from "@/components/FormDialog.vue";
+import useAppStore from "@/store/modules/app.js";
+
+const appStore = useAppStore();
 
 // 解构出退出登录方法
 const {handleLogout} = useLogout();
@@ -82,6 +86,11 @@ const {form, rules, formRef, formDialogRef, openDialog, onSubmit} = useRePasswor
 
 // 全屏方法
 const {toggle} = useFullscreen();
+
+// 展开折叠菜单栏方法
+const collapse = () => {
+  appStore.asideWidth = appStore.asideWidth === '250px' ? '64px' : '250px';
+}
 
 // 刷新方法
 const refresh = () => {
@@ -112,6 +121,7 @@ const handleCommand = (command) => {
   color: #ffffff;
   display: flex;
   align-items: center;
+  position: fixed;
 }
 
 .logo {

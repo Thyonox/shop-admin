@@ -4,9 +4,9 @@ import NotFount from '@/pages/error/404.vue'
 import Login from '@/pages/auth/login.vue'
 import Home from '@/pages/index.vue'
 import Layout from "@/layout/layout.vue";
-// import GoodsList from '../views/goods/list.vue'
-// import CategoryList from '../views/category/list.vue'
-// import ImageList from '../views/image/list.vue'
+import GoodsList from "@/pages/goods/goodsList.vue";
+import CategoryList from "@/pages/category/categoryList.vue";
+import ImageList from "@/pages/image/imageList.vue";
 
 // 公共路由
 const routes = [
@@ -45,30 +45,30 @@ const routes = [
 
 // 动态路由
 export const asyncRoutes = [
-//   {
-//     path: "/",
-//     name: "/",
-//     component: Home,
-//     meta: {
-//       title: "后台首页"
-//     }
-//   }, 
-//   {
-//     path: "/goods/list",
-//     name: "/goods/list",
-//     component: GoodsList,
-//     meta: {
-//       title: "商品管理"
-//     }
-//   }, 
-//   {
-//     path: "/category/list",
-//     name: "/category/list",
-//     component: CategoryList,
-//     meta: {
-//       title: "分类列表"
-//     }
-//   },
+  {
+    path: "/",
+    name: "/",
+    component: Home,
+    meta: {
+      title: "后台首页"
+    }
+  },
+  {
+    path: "/goods/list",
+    name: "/goods/list",
+    component: GoodsList,
+    meta: {
+      title: "商品管理"
+    }
+  },
+  {
+    path: "/category/list",
+    name: "/category/list",
+    component: CategoryList,
+    meta: {
+      title: "分类列表"
+    }
+  },
 // {
 //   path: "/user/list",
 //   name: "/user/list",
@@ -90,15 +90,15 @@ export const asyncRoutes = [
 //   meta: {
 //     title: "评价列表"
 //   }
-// }, 
-// {
-//   path: "/image/list",
-//   name: "/image/list",
-//   component: ImageList,
-//   meta: {
-//     title: "图库列表"
-//   }
-// }, 
+// },
+{
+  path: "/image/list",
+  name: "/image/list",
+  component: ImageList,
+  meta: {
+    title: "图库列表"
+  }
+},
 // {
 //   path: "/notice/list",
 //   name: "/notice/list",

@@ -39,6 +39,7 @@ instance.interceptors.response.use(function (response) {
     // 放行
     return response.data.data;
   }, function (error) {
+    console.log(error)
     // 错误响应统一提示
     notify(error.response.data.msg || '请求失败', 'error')
     return Promise.reject(error);
