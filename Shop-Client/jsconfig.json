@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "~/*": ["./*"]
+    },
+    "module": "ESNext",
+    "target": "ES6",
+    "checkJs": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", ".vscode", ".idea"]
+}
