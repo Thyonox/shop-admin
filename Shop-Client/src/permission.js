@@ -32,7 +32,9 @@ router.beforeEach( async (to, from, next) => {
     if (token && !hasGetInfo){
         // 使用 await 使请求通过再放行，产生一个空白时间
         await getInfo().then(res => {
+            console.log(res)
             useUserStore().user = res;
+            useUserStore().menus = res.menus;
         })
         hasGetInfo = true;
     }

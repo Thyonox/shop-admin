@@ -49,7 +49,7 @@ const appStore = useAppStore();
 const route = useRoute();
 const router = useRouter();
 
-const asideMenus = computed(() => userStore.user.menus);
+const asideMenus = computed(() => userStore.menus);
 
 const isCollapse = computed(() => !(appStore.asideWidth === '250px'))
 

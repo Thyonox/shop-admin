@@ -7,7 +7,6 @@
 
 <script setup>
 import useUserStore from "@/store/modules/user.js";
-
 </script>
 
 <style scoped>
