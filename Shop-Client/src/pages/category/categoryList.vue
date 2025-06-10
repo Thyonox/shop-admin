@@ -1,5 +1,7 @@
 <template>
-
+    <div class="container">
+        categoryList
+    </div>
 </template>
 
 <script setup>

@@ -73,6 +73,8 @@ const handleSelect = (e) => {
   left: 0;
   background: #fff;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.35);
+  /* 使侧边栏层叠顺序高于标签导航栏，避免阴影样式被吞 */
+  z-index: 1001;
 }
 
 .el-menu{

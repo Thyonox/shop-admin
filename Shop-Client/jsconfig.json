@@ -2,14 +2,26 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["./*"]
+      "@/*": [
+        "src/*"
+      ],
+      "~/*": [
+        "./*"
+      ]
     },
     "module": "ESNext",
     "target": "ES6",
     "checkJs": true,
-    "moduleResolution": "Node"
+    "moduleResolution": "nodenext",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", ".vscode", ".idea"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    ".vscode",
+    ".idea"
+  ]
 }

@@ -1,4 +1,4 @@
-import instance from "../utils/request";
+import instance from "../utils/request.js";
 
 // 登录
 export function login(username,password) {

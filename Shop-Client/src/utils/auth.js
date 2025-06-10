@@ -1,4 +1,5 @@
-import {useCookies} from "@vueuse/integrations/useCookies";
+// 手动按需引入，VSCode提示不智能
+import { useCookies } from "@vueuse/integrations/useCookies";
 
 const TOKEN_KEY = 'admin-token';
 const cookie = useCookies();

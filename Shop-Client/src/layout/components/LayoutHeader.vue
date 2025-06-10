@@ -23,7 +23,7 @@
         </el-icon>
       </el-tooltip>
       <el-dropdown trigger="click" @command="handleCommand">
-        <el-avatar :size="25" shape="square" :src="circleUrl" class="avatar"/>
+        <el-avatar :size="25" shape="square" :src="userStore.user.avatar" class="avatar"/>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item command="rePassword">修改密码</el-dropdown-item>
@@ -75,8 +75,10 @@ import {useFullscreen} from "@vueuse/core";
 import {useLogout,useRePassword} from "@/services/userService.js";
 import FormDialog from "@/components/FormDialog.vue";
 import useAppStore from "@/store/modules/app.js";
+import useUserStore from "@/store/modules/user";
 
 const appStore = useAppStore();
+const userStore = useUserStore();
 
 // 解构出退出登录方法
 const {handleLogout} = useLogout();

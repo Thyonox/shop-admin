@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {computed, reactive} from "vue";
+import {reactive} from "vue";
 
 const useUserStore = defineStore('user', () => {
     // 后端返回的用户信息

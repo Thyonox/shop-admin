@@ -14,16 +14,6 @@ const routes = [
     path: '/',
     name: 'Layout',
     component: Layout,
-    children: [
-      {
-        path: '/',
-        name: 'Home',
-        component: Home,
-        meta: {
-          title: '后台首页'
-        }
-      },
-    ]
   },
   {
     path: '/:pathMatch(.*)*',
@@ -43,19 +33,19 @@ const routes = [
   },
 ]
 
-// 动态路由
-export const asyncRoutes = [
+// 动态路由，由后端数据动态添加进路由
+const asyncRoutes = [
   {
     path: "/",
-    name: "/",
+    name: "Home",
     component: Home,
     meta: {
-      title: "后台首页"
+      title: "主控台"
     }
   },
   {
     path: "/goods/list",
-    name: "/goods/list",
+    name: "GoodsList",
     component: GoodsList,
     meta: {
       title: "商品管理"
@@ -63,7 +53,7 @@ export const asyncRoutes = [
   },
   {
     path: "/category/list",
-    name: "/category/list",
+    name: "CategoryList",
     component: CategoryList,
     meta: {
       title: "分类列表"
@@ -93,7 +83,7 @@ export const asyncRoutes = [
 // },
 {
   path: "/image/list",
-  name: "/image/list",
+  name: "ImageList",
   component: ImageList,
   meta: {
     title: "图库列表"
@@ -185,6 +175,27 @@ export const asyncRoutes = [
 //   }
 // }
 ]
+
+// 动态加载路由函数
+export function loadDynamicRoutes(menus) {
+  let hasNewRoutes = false;
+  const addRoutes = (err) => {
+    err.forEach(element => {
+      let item = asyncRoutes.find(o => o.path === element.frontpath);
+      // 存在动态路由，且没有添加
+      if(item && !router.hasRoute(item.name)) {
+        router.addRoute('Layout', item);
+        hasNewRoutes = true;
+      }
+      // 递归添加子路由
+      if(element.child && element.child.length > 0) {
+        addRoutes(element.child);
+      }
+    });
+  }
+  addRoutes(menus);
+  return hasNewRoutes;
+}
 
 const router = createRouter({
   history: createWebHistory(),
