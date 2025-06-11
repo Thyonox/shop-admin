@@ -11,6 +11,6 @@ export function getGoodsAndOrders(){
 }
 
 // 获取ECharts图表数据
-export function getEcharts(){
-    return instance.get('/admin/statistics3');
+export function getEcharts(type){
+    return instance.get('/admin/statistics3?type=' + type);
 }
