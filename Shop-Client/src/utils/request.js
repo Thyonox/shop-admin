@@ -6,7 +6,7 @@ import {notify} from "@/utils/message.js";
 // 创建 Axios 实例
 const instance = axios.create({
     baseURL: '/api', // 被vite代理
-    timeout: 1000,
+    // timeout: 1000,
   });
 
 // 添加请求拦截器
