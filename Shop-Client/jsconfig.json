@@ -11,10 +11,6 @@
     },
     "module": "ESNext",
     "target": "ES6",
-    "checkJs": true,
-    "moduleResolution": "nodenext",
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true,
   },
   "include": [
     "src/**/*"
@@ -22,6 +18,7 @@
   "exclude": [
     "node_modules",
     ".vscode",
-    ".idea"
+    ".idea",
+    "dist",
   ]
 }
