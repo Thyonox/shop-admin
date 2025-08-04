@@ -58,6 +58,7 @@ const formDialogRef = ref(null);
 const formRef = ref(null);
 const form = reactive({ name: '', order: 50 });
 const rules = { name: [{ required: true, message: '分类名称不能为空', trigger: 'blur' }] };
+const emit = defineEmits(['change']);
 
 // 获取图片分类列表数据
 function getData(page = null) {
@@ -71,6 +72,8 @@ function getData(page = null) {
         total.value = res.totalCount;
         // 默认选中列表第一项
         activeId.value = res.list?.[0].id || 0;
+        // 调用方法，更改图片展示列表
+        handleChangeActive(activeId.value);
     }).finally(() => {
         loading.value = false;
     })
@@ -78,8 +81,10 @@ function getData(page = null) {
 
 getData();
 
+// 更改图片分类选中项
 const handleChangeActive = (id) => {
     activeId.value = id;
+    emit('change', id);
 }
 
 // 提交表单数据
@@ -136,6 +141,7 @@ defineExpose({
 .image-list-aside {
     width: 220px;
     position: relative;
+    border-right: 1px solid #eee;
 }
 
 .image-list-aside .top {

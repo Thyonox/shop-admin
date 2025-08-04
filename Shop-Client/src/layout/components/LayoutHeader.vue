@@ -124,6 +124,7 @@ const handleCommand = (command) => {
   display: flex;
   align-items: center;
   position: fixed;
+  z-index: 1000;
 }
 
 .logo {

@@ -6,10 +6,10 @@
         </el-header>
         <el-container>
             <!-- 侧边图片分类列表 -->
-            <ImageAside ref="imageAsideRef"/>
+            <ImageAside ref="imageAsideRef" @change="handleChangeAside"/>
 
             <!-- 主题图片展示列表 -->
-            <ImageMain />
+            <ImageMain ref="imageMainRef"/>
         </el-container>
     </el-container> 
 </template>
@@ -22,9 +22,14 @@ import { ref } from 'vue';
 const windowHeight = window.innerHeight || document.body.clientHeight;
 const mainHeight = windowHeight - 64 - 44 - 40;
 const imageAsideRef = ref(null);
+const imageMainRef = ref(null);
 
 const handleAdd = () => {
     imageAsideRef.value.handleCreate();
+}
+
+const handleChangeAside = (classId) => {
+    imageMainRef.value.loadData(classId);
 }
 </script>
 
@@ -36,5 +41,7 @@ const handleAdd = () => {
 .image-list-header {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
 }
 </style>
